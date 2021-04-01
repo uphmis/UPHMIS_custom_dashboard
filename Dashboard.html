@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UPHMIS DashBoard</title>
+
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="./CSS/bootstrap.css">
+    <!--LeafLet CSS-->
+    <link rel="stylesheet" href="./CSS/leaflet.css" />
+    <!--Uikit CSS-->
+    <link rel="stylesheet" href="./CSS/uikit.min.css" />
+    <link rel="stylesheet" href="./CSS/Dashboard.css" />
+
+</head>
+
+<body>
+    <!--Nav Bar-->
+    <!--<nav class="uk-navbar-container" uk-navbar>
+        <div class="uk-navbar-left">
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">
+                    <a href="./index.html">
+                        <h3>UPHMIS Dashboard</h3>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+-->
+
+
+
+    <!--section Search-->
+
+    <section id="search">
+        <div class="uk-flex uk-flex-between">
+            <div class="uk-margin-right">
+                <a class="uk-button  uk-button-small" href="./index.html" role="button">Go Back</a>
+                <a class="uk-button  uk-button-small" onclick="window.print()" style="color:white" role="button">Download</a>
+            </div>
+
+            <div class="uk-margin-right">
+                <select id="orgUnit">
+                            <option  disabled>Select organisationUnit</option>
+                             <option  value="v8EzhiynNtf">Uttar Pardesh</option>
+                        </select>
+            </div>
+
+            <div class="uk-margin-right">
+                <input type="date" id="startDate" data-date-size="4" value="2016-04-01" />
+            </div>
+
+            <div class="uk-margin-right">
+                <input type="date" id="endDate" data-date-size="4" value="2017-03-31" />
+            </div>
+
+            <div class="uk-margin-right">
+                <select id="indicator" name="indicator">
+                <option disabled>Select Indicator</option>
+                </select>
+            </div>
+            <div>
+                <button onclick="CreateDashboard()" id="btn1">Generate</button>
+                <button onclick="logout()" id="logout">Logout</button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="col-lg-4 box1">
+                <table height="100%" id="dataTable" class="table table-responsive table-striped tablesorter"></table>
+                <table height="100%" id="dataTable1" class="table table-responsive table-striped tablesorter"></table>
+
+            </div>
+            <div class="col-lg-8 box2">
+                <div id="mapid" style="height:100%">
+                </div>
+
+            </div>
+
+        </div>
+        <div class="loader"></div>
+
+
+        <div class="row text-center" id="mainContent">
+            <div class="col-lg-12 box3" id="charts">
+                <!--NavBar-->
+                <nav class="nav justify-content-left nav-pills flex-column flex-md-row">
+                    <a class="nav-link active" href="#Trend" data-toggle="tab">Time Trend</a>
+                    <a class="nav-link" href="#Dist" data-toggle="tab">Distribution</a>
+                </nav>
+
+                <div class="tab-content py-5">
+                    <div class="tab-pane active" id="Trend">
+
+                        <!--Trendcode-->
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators carousel-indicators-numbers">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"><img src="./Img/trends.png"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"><img src="./Img/Bar.png"></li>
+                            </ol>
+
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <div id="div1" style="width:100%"></div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div id="div3" style="width:100%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane fade" id="Dist">
+
+                        <!--Distribution-->
+                        <nav class="nav justify-content-center nav-pills flex-column flex-md-row">
+                            <a class="nav-link active" href="#FacPie" data-toggle="tab">Facility Type</a>
+                            <a class="nav-link" href="#DivBar" data-toggle="tab">Administration Unit</a>
+                            <a class="nav-link disabled" href="#DivBar1" data-toggle="tab">Public/Private</a>
+                            <a class="nav-link disabled" href="#DivBar2" data-toggle="tab">Case Load Wise</a>
+                            <a class="nav-link disabled" href="#DivBar3" data-toggle="tab">Rural/Urban</a>
+                            <a class="nav-link disabled" href="#DivBar4" data-toggle="tab">HPD/Non HPD</a>
+                        </nav>
+                        <div class="tab-content py-5">
+                            <div class="tab-pane active" id="FacPie">
+
+
+                                <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
+
+                                    <!-- Indicators -->
+                                    <ol class="carousel-indicators carousel-indicators-numbers">
+                                        <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"><img src="./Img/Cake.png"></li>
+                                        <li data-target="#carouselExampleIndicators1" data-slide-to="1"><img src="./Img/Bar.png"></li>
+                                    </ol>
+
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="carousel-item active">
+                                            <div id="div2" style="width:100%"></div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div id="div4" style="width:100%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="tab-pane fade" id="DivBar">
+
+
+                                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+
+                                    <!-- Indicators -->
+                                    <ol class="carousel-indicators carousel-indicators-numbers">
+                                        <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"><img src="./Img/Cake.png"></li>
+                                        <li data-target="#carouselExampleIndicators2" data-slide-to="1"><img src="./Img/Bar.png"></li>
+                                    </ol>
+
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="carousel-item active">
+                                            <div id="div5" style="width:100%"></div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div id="div6" style="width:100%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <script src="./JS/jquery.js"></script>
+    <!--Bootstrap-->
+    <script src="./JS/teher.js"></script>
+    <script src="./JS/Bootstrap.js"></script>
+
+    <!--Moment libray for date differnce calculator-->
+    <script src="./JS/moment.js"></script>
+
+    <!--highcharts Library-->
+    <script src="./JS/highcharts.js"></script>
+    <script src="./JS/data.js"></script>
+    <script src="./JS/exporting.js"></script>
+
+    <!--LeafLet Map Lib-->
+    <script src="./JS/leaflet.js"></script>
+
+    <!--Table sorter-->
+    <script src="./JS/jquery.tablesorter.min.js"></script>
+
+
+    <!--Main controller Library-->
+    <script src="./controller/Dashboard.js"></script>
+
+
+
+</body>

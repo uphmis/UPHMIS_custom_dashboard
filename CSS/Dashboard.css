@@ -1,0 +1,228 @@
+/**** Created By Vicky **********/
+
+        body {
+            height: 800px;
+            background: #F8F8F8;
+        }
+
+        nav div {
+            background: #FF9933;
+        }
+
+        nav h3 {
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .container-fluid {
+            height: 800px;
+        }
+
+        .box1 {
+            height: 400px;
+            padding: 15px;
+        }
+
+        .box2 {
+            height: 400px;
+            padding: 15px;
+        }
+
+        .box3 {
+            background: #838B8B;
+            /*max-height: 400px;*/
+            padding: 15px;
+        }
+
+
+
+/*Map CSS*/
+        .info {
+            padding: 6px 8px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background: #efefef;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        .info h4 {
+            margin: 0 0 5px;
+            color: #777;
+        }
+
+        .legend {
+            text-align: left;
+            line-height: 18px;
+            color: #555;
+        }
+
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+
+
+
+        /*Search*/
+
+        #search{
+            background: #838B8B; 
+           
+            padding: 1%;
+        }
+
+        #orgUnit{
+            height: 30px
+        }
+
+        
+        #indicator{
+            width: 200px;
+            height: 30px;
+        }
+
+        .uk-button {
+            background: #6DC066 ;
+            color:white;
+        }
+        
+        .uk-button:hover {
+            background: #FF6600 ;
+            cursor: pointer;
+            color:white;
+        }
+
+#btn1{
+     color: white;
+    background: #FFD302;
+    border:none;
+    height: 30px;
+    cursor: pointer;
+}
+
+
+#btn1:hover{
+     color: white;
+    background: #FF6600;
+    border:none;
+    height: 30px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+         @media only screen and (max-width: 500px) {
+        .uk-flex {
+            flex-direction: column;
+            text-align: center;
+            width: 100%;
+        }
+        .uk-margin-right{
+            padding-bottom: 10px;
+        }
+    }
+
+
+
+
+
+/*Button of Maps*/
+
+ .nav-pills .nav-link{
+
+    color: #ffffff;
+}
+
+ .nav-pills .nav-link.active{
+    background: white;
+    color: #838B8B;
+}
+
+
+/*CHARTS Carousel*/
+
+ .carousel-indicators {
+            position: absolute;
+            right: 0;
+            bottom: 10px;
+            left: 60%;
+            z-index: 15;
+            height: 4%;
+            padding-left: 0;
+            margin-right: 15%;
+            margin-left: 15%;
+            list-style: none;
+        }
+
+
+        .carousel-indicators-numbers li {
+            text-indent: 0;
+            margin: 0 2px;
+            width: 0;
+            height: 0;
+            border: none;
+            border-radius: 100%;
+        }
+
+        .carousel-indicators-numbers li.active,
+        .carousel-indicators-numbers li:hover {
+            margin: 0 2px;
+            width: 0px;
+            height: 0px;
+        }
+
+
+        .py-5 {
+            padding-top: 1rem!important;
+            padding-bottom: 1rem!important;
+        }
+
+
+        .leaflet-container {
+            background: #EBEBEB;
+        }
+
+
+/*loader css*/
+
+.loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+            width: 10px;
+            height: 10px;
+            margin: -75px 0 0 -75px;
+            border: 10px solid #838B8B;
+            border-radius: 30%;
+            border-top: 10px solid #FF9933;
+            width: 50px;
+            height: 50px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+        }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }

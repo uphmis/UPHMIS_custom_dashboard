@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>UPHMIS Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/uikit.min.css" />
+</head>
+<style>
+    body {
+        height: 770px;
+        background: #F8F8F8;
+    }
+
+    nav div {
+        background: #FF9933;
+    }
+
+    nav h3 {
+        margin: 0;
+        color: #ffffff;
+    }
+
+    .uk-card-primary {
+        background: #838B8B;
+    }
+
+    .uk-card-primary:hover {
+        cursor: pointer;
+        background: #555555;
+    }
+
+    .uk-card-default:hover {
+        cursor: pointer;
+    }
+
+    @media only screen and (max-width: 500px) {
+        .uk-flex {
+            flex-direction: column;
+        }
+        .uk-card {
+            margin-left: 0px!important;
+            margin-bottom: 20px!important;
+        }
+    }
+</style>
+
+<body>
+
+
+
+
+    <!--Content Section-->
+    <div class="uk-section ">
+        <div class="uk-container">
+
+            <!-- Section1  -->
+            <section id="loginForm">
+                <!-- Login Form -->
+                <div class="uk-flex uk-flex-center uk-flex-around">
+
+
+
+                    <div class="uk-card uk-card-primary  uk-card-body uk-margin-bottom">
+                        <h3 class="uk-card-title" style="text-align: center">UPHMIS Health Dashboard</h3>
+                        <img src="/Img/Dashboard.png" style="height:400px!important" />
+                    </div>
+
+                    <div class="uk-card uk-card-small  uk-card-primary  uk-card-body uk-margin-bottom" style="width:350px">
+                        <div style="padding:20px">
+                            <p class="uk-card-title" style="text-align:center">Login</p>
+                            <input class="uk-input" type="text" id="userName" placeholder="Username" />
+                            <hr />
+                            <input class="uk-input" type="password" id="passWord" placeholder="Password" />
+                            <hr />
+                            <div style="text-align: center"><button class="uk-button uk-button-default" type="submit"
+                                    onclick="getValues()">Login</button></div>
+
+                            <hr />
+                            <p>
+                                Get data visualized in better way. Drill down data till block level.
+                                Get data in table formats, charts distribution and Maps.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Section2 -->
+            <section id="indicatorSection" style="display:none">
+                <div class="uk-panel uk-dark uk-margin-medium">
+                    <h3>Indicator Group</h3>
+                </div>
+
+
+                <div class="uk-flex uk-flex-center uk-flex-around">
+                    <div onclick="location.href='./Dashboard.html?indid=v94lWO8FPMr'">
+                        <div class="uk-card uk-card-primary  uk-card-body uk-margin-bottom">
+                            <h3 class="uk-card-title">Maternal Health</h3>
+                            <p>Genrate Interactive Dashboard. Visualize Data on Charts , Maps and Tables.
+                            </p>
+                        </div>
+                    </div>
+                    <div onclick="location.href='./Dashboard.html?indid=WvkolZrjUSI'">
+                        <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-margin-left uk-margin-bottom ">
+                            <h3 class="uk-card-title">Child Health</h3>
+                            <p>Genrate Interactive Dashboard. Visualize Data on Charts , Maps and Tables.
+                            </p>
+                        </div>
+                    </div>
+                    <div onclick="location.href='./Dashboard.html?indid=bwOlCJ7IfK8'">
+                        <div class="uk-card uk-card-primary  uk-card-body uk-light uk-margin-left uk-margin-bottom">
+                            <h3 class="uk-card-title">Child Immunization</h3>
+                            <p>Genrate Interactive Dashboard. Visualize Data on Charts , Maps and Tables.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uk-flex uk-flex-center uk-flex-around">
+                    <div onclick="location.href='./Dashboard.html?indid=wOlXYlamUm3'">
+                        <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-dark">
+                            <h3 class="uk-card-title">Family planning</h3>
+                            <p>Genrate Interactive Dashboard. Visualize Data on Charts , Maps and Tables.
+                            </p>
+                        </div>
+                    </div>
+                    <div onclick="location.href='./Dashboard.html?indid=GCsRiA9tJp7'">
+                        <div class="uk-card uk-card-primary uk-card-body uk-light uk-margin-left">
+                            <h3 class="uk-card-title">Hospital Services</h3>
+                            <p>Genrate Interactive Dashboard.Visualize Data on Charts , Maps and Tables.</p>
+                        </div>
+                    </div>
+                    <div onclick="location.href='./Dashboard.html?indid=mnFw37EFxXM'">
+                        <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-dark uk-margin-left">
+                            <h3 class="uk-card-title">Civil Works</h3>
+                            <p>Genrate Interactive Dashboard.Visualize Data on Charts , Maps and Tables.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </div>
+    </div>
+
+    <script src="./JS/jquery.js"></script>
+    <script>
+        if (typeof (Storage) !== "undefined") {
+            var item = sessionStorage.getItem("header");
+            if (item !== null) {
+                document.getElementById("loginForm").style.display = "none";
+                document.getElementById("indicatorSection").style.display = "block";
+            } else {
+                document.getElementById("loginForm").style.display = "block";
+                document.getElementById("indicatorSection").style.display = "none";
+            }
+        }
+
+        function getValues() {
+
+            if (document.getElementById("userName").value !== "dashboard") {
+                alert("Wrong User Name Password");
+            } else {
+                var header = {
+                    "Authorization": "Basic " + btoa(document.getElementById("userName").value + ':' + document.getElementById(
+                        "passWord").value)
+                };
+
+                console.log(header)
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "application/json",
+                    headers: header,
+                    url: 'https://uphmis.in/uphmis/dhis-web-commons/security/login.action',
+                    success: function (data) {
+                        console.log(data)
+                    },
+                    error: function (response) {
+                        session(header, response)
+                    }
+                });
+            }
+
+
+
+        }
+
+        function session(header, data) {
+
+            if (data.statusText === "OK") {
+                // Check browser support
+                if (typeof (Storage) !== "undefined") {
+                    // Store
+                    sessionStorage.setItem("header", header.Authorization);
+                    // Retrieve
+                    console.log(sessionStorage.getItem("header"));
+
+                    document.getElementById("loginForm").style.display = "none";
+                    document.getElementById("indicatorSection").style.display = "block";
+
+                } else {
+                    // document.getElementById("result").innerHTML =
+                    //     "Sorry, your browser does not support Web Storage...";
+                }
+            } else {
+                alert("Wrong User Name Password");
+            }
+
+
+        }
+    </script>
+
+
+</body>
+
+</html>
